@@ -38,12 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     detectDevice(); // Run detection on load
 
     // --- Helper Functions (mostly unchanged) ---
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
     function addLine(text, className = '') {
         const line = document.createElement('div');
         // Note: text contains trusted HTML from our own code, not user input
