@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Helper Functions (mostly unchanged) ---
     function addLine(text, className = '') {
         const line = document.createElement('div');
+        // Note: text contains trusted HTML from our own code, not user input
+        // User input is sanitized on the server side
         line.innerHTML = text;
         line.className = `line ${className}`;
         output.appendChild(line);

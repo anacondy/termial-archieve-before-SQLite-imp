@@ -23,11 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     function createFormCard(file) {
         const card = document.createElement('div');
         card.className = 'form-card';
+        const escapedFileName = escapeHtml(file.name);
         card.innerHTML = `
-            <h3 title="${file.name}">${file.name}</h3>
+            <h3 title="${escapedFileName}">${escapedFileName}</h3>
             <div class="status-indicator">Pending</div>
             <label>Your Name:</label> <input type="text" name="admin_name" placeholder="e.g., Alvido" required>
             <label>Class:</label> <select name="class" required> <option value="" disabled selected>Select a Class</option> <option value="BA">BA</option> <option value="BSc">BSc</option> <option value="BA/BSc">BA/BSc</option> <option value="BSc Hons">BSc Hons</option> <option value="BBA">BBA</option> <option value="BCA">BCA</option> <option value="MCA">MCA</option> </select>
