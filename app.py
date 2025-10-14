@@ -126,6 +126,10 @@ def upload_file():
                                     f"{filename_prefix}_{base_filename}({counter}){file_extension}")
             counter += 1
 
+        # Ensure the file path is within the upload folder (prevent path traversal)
+        if not os.path.abspath(filepath).startswith(os.path.abspath(app.config['UPLOAD_FOLDER'])):
+            return jsonify({"error": "Invalid file path"}), 400
+
         new_filename = os.path.basename(filepath)
         
         # Save the file
