@@ -1,241 +1,147 @@
-# Terminal Archives - Previous Year Papers Management System
+# Terminal Archive - Previous Year Papers
 
-A terminal-style web application for managing and searching previous year examination papers. Features a retro terminal interface with secure file upload and search capabilities.
+A Flask-based web application for managing and accessing previous year academic papers with a terminal-style interface.
 
-## 🎯 Project Overview
+## Features
 
-**Terminal Archives** is a Flask-based web application that provides an intuitive terminal-style interface for managing educational resources, specifically previous year examination papers. The application allows administrators to upload PDF files with detailed metadata and users to search through the archives efficiently.
+- 📁 Terminal-style interface for browsing papers
+- 🔍 Search functionality with keyboard shortcuts (Ctrl+K)
+- 📤 File upload with progress bar
+- 🎨 Retro terminal aesthetic with green theme
+- 📱 Responsive design for mobile devices
 
-### Main Features
-- 🖥️ **Retro Terminal UI**: Clean, minimalist terminal-style interface
-- 📱 **Responsive Design**: Works seamlessly on desktop and mobile devices
-- 🔍 **Advanced Search**: Fast search across all paper metadata
-- 📄 **PDF Management**: Upload, tag, and serve PDF files securely
-- 🔒 **Security First**: Multiple security layers to protect against common vulnerabilities
-- 📊 **Metadata Support**: Automatic PDF metadata embedding
+## Project Structure
 
-## 🔒 Security Features
+```
+paper-achieve-terminal/
+├── static/
+│   ├── script.js      # Terminal interface logic
+│   ├── style.css      # Styling with terminal theme
+│   └── upload.js      # Upload functionality with progress bar
+├── templates/
+│   ├── index.html     # Main terminal interface
+│   └── upload.html    # Upload page
+├── uploads/           # Directory for uploaded files
+├── app.py            # Flask application
+└── requirements.txt  # Python dependencies
+```
 
-This application implements multiple security best practices:
+## Installation
 
-### Implemented Security Measures
-1. **Secret Key Management**: Uses cryptographically secure secret keys
-2. **File Upload Security**:
-   - File type validation (PDF only)
-   - File size limits (50 MB max)
-   - Secure filename sanitization
-   - Path traversal prevention
-3. **Input Sanitization**: All user inputs are sanitized to prevent XSS and injection attacks
-4. **Security Headers**:
-   - X-Frame-Options (prevents clickjacking)
-   - X-Content-Type-Options (prevents MIME sniffing)
-   - Content-Security-Policy (prevents XSS)
-   - X-XSS-Protection
-   - Referrer-Policy
-5. **Debug Mode**: Disabled in production environments
-6. **Error Handling**: Proper error messages without leaking sensitive information
+1. Clone the repository:
+```bash
+git clone https://github.com/anacondy/termial-archieve-before-SQLite-imp.git
+cd termial-archieve-before-SQLite-imp
+```
 
-### Security Rating: 8/10
-- ✅ Input validation and sanitization
-- ✅ Secure file handling
-- ✅ Security headers implemented
-- ✅ No hardcoded secrets
-- ⚠️ Consider adding: Rate limiting, authentication system, HTTPS enforcement
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-## 🚀 Setup Instructions
+3. Run the application:
+```bash
+python app.py
+```
 
-### Prerequisites
-- Python 3.7 or higher
-- pip (Python package manager)
+4. Open your browser and navigate to `http://127.0.0.1:5000`
 
-### Installation
+## Usage
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/anacondy/termial-archieve-before-SQLite-imp.git
-   cd termial-archieve-before-SQLite-imp
-   ```
+### Terminal Interface
+- Type `help` to see available commands
+- Type `list` to view all papers
+- Type `search` to search for papers
+- Type `upload` to go to upload page
+- Type `clear` to clear the screen
+- Press `Ctrl+K` to open quick search modal
 
-2. **Create a virtual environment** (recommended)
-   ```bash
-   python -m venv venv
-   
-   # On Windows
-   venv\Scripts\activate
-   
-   # On macOS/Linux
-   source venv/bin/activate
-   ```
+### Uploading Papers
+1. Click "Upload" or type `upload` in terminal
+2. Select a file (PDF, DOC, DOCX, or TXT)
+3. Watch the progress bar as your file uploads
+4. Files are stored in the `uploads/` directory
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Screenshots
 
-4. **Set environment variables** (optional but recommended)
-   ```bash
-   # On Windows
-   set SECRET_KEY=your-secret-key-here
-   set FLASK_ENV=production
-   
-   # On macOS/Linux
-   export SECRET_KEY=your-secret-key-here
-   export FLASK_ENV=production
-   ```
+### Desktop View - Terminal Interface
+![Terminal Interface](https://github.com/user-attachments/assets/acf8d903-e970-4458-8b45-90db2abd7bb5)
 
-5. **Run the application**
-   ```bash
-   python app.py
-   ```
+### Desktop View - Upload Page
+![Upload Page](https://github.com/user-attachments/assets/291db75d-da9d-40f2-bc71-34666f8dc153)
 
-6. **Access the application**
-   - Open your browser and navigate to: `http://127.0.0.1:5000`
-   - Admin upload page: `http://127.0.0.1:5000/admin`
+### Mobile View - Responsive Design
+![Mobile View](https://github.com/user-attachments/assets/c31b93bb-84ff-4224-8c35-c056282dadf1)
 
-## 📖 Usage Guide
+## Testing
 
-### For Users (Searching Papers)
-1. Visit the homepage
-2. On desktop: Press `Ctrl + K` to open search
-3. On mobile: Use the search bar at the bottom
-4. Type your query (e.g., "Physics 2024")
-5. Press Enter to search
-6. Click on results to download papers
+The application includes a comprehensive test suite to ensure all features work correctly.
 
-### For Administrators (Uploading Papers)
-1. Visit `/admin` or type "upload" in the search
-2. Drag and drop PDF files or click to browse
-3. Fill in required metadata:
-   - Your name
-   - Class (BA, BSc, BBA, etc.)
-   - Subject name
-   - Semester
-   - Exam year
-   - Exam type (Main Semester, CIA, etc.)
-   - Medium (English, Hindi, Hinglish)
-4. Optional fields: Paper code, university, time, marks
-5. Click "Upload All Pending Files"
+### Running Tests
 
-## 🔧 Configuration
+Run all tests with:
+```bash
+python test_app.py
+```
 
-### Environment Variables
-- `SECRET_KEY`: Secret key for Flask sessions (auto-generated if not set)
-- `FLASK_ENV`: Set to "production" for production deployment
+### Test Coverage
 
-### File Limits
-- Maximum file size: 50 MB
-- Allowed file types: PDF only
-- Files are stored in the `uploads/` directory
+The test suite includes:
 
-## 🌐 Deployment
+- **Route Testing**: Validates all endpoints (/, /upload, /uploads/<filename>)
+- **File Upload Testing**: Tests PDF, TXT, DOC, and DOCX file uploads
+- **Validation Testing**: Ensures invalid file types are rejected
+- **Static Files**: Verifies CSS and JavaScript files are accessible
+- **Error Handling**: Tests 404 and error pages
+- **File Type Validation**: Unit tests for allowed/disallowed extensions
 
-### Important Note for GitHub Pages
-⚠️ **This application CANNOT be deployed to GitHub Pages** because:
-- GitHub Pages only supports static HTML/CSS/JS files
-- This is a Flask (Python) application requiring a backend server
-- File uploads require server-side processing
+### Test Results
 
-### Recommended Deployment Options
-1. **Heroku** (Free tier available)
-2. **PythonAnywhere** (Free tier available)
-3. **AWS EC2** or **DigitalOcean**
-4. **Google Cloud Platform**
-5. **Railway** or **Render**
+All 13 tests pass successfully:
+- ✓ Index route loads correctly
+- ✓ Upload page loads correctly
+- ✓ File uploads work (PDF, TXT, DOC, DOCX)
+- ✓ Invalid file types are rejected
+- ✓ Static files are accessible
+- ✓ Error handlers work properly
+- ✓ File validation functions correctly
 
-### Production Deployment Checklist
-- [ ] Set `FLASK_ENV=production`
-- [ ] Set a strong `SECRET_KEY` environment variable
-- [ ] Use a production WSGI server (Gunicorn, uWSGI)
-- [ ] Enable HTTPS/SSL
-- [ ] Set up proper database (if extending functionality)
-- [ ] Configure proper logging
-- [ ] Set up backup system for uploaded files
-- [ ] Add rate limiting (e.g., Flask-Limiter)
-- [ ] Consider adding authentication
+### Manual Testing
 
-## 🏗️ Architecture
+For manual testing:
+1. Start the application: `python app.py`
+2. Open http://127.0.0.1:5000 in your browser
+3. Test the terminal interface commands
+4. Try uploading different file types
+5. Test on mobile devices or resize browser window
+6. Verify keyboard shortcuts (Ctrl+K for search)
 
-### Technology Stack
-- **Backend**: Flask (Python 3)
-- **Frontend**: Vanilla JavaScript, HTML5, CSS3
-- **PDF Processing**: PyPDF2
+## Technical Details
+
+- **Backend**: Flask 3.0.0
+- **File Size Limit**: 16MB
+- **Allowed File Types**: PDF, DOC, DOCX, TXT
+- **Styling**: Custom CSS with terminal aesthetic
 - **Font**: Fira Code (monospace)
+- **Mobile Optimization**: 
+  - Responsive design with proper viewport scaling
+  - Optimized font spacing and rendering (letter-spacing, line-height)
+  - Anti-aliased font rendering for better readability
+  - iOS zoom prevention (16px minimum font size)
+  - Breakpoints for tablets (768px) and phones (480px)
+  - Touch-friendly button sizes on mobile devices
 
-### File Structure
-```
-termial-archieve-before-SQLite-imp/
-├── app.py                 # Flask backend application
-├── index.html            # Main terminal interface (Jinja2 template)
-├── upload.html           # Admin upload interface (Jinja2 template)
-├── script.js             # Frontend JavaScript for terminal
-├── upload.js             # Frontend JavaScript for uploads
-├── style.css             # Styling for terminal interface
-├── requirements.txt      # Python dependencies
-├── uploads/              # Directory for uploaded PDFs (not committed)
-└── README.md            # This file
-```
+## Code Quality & Best Practices
 
-## 🐛 Known Limitations
+- **Error Handling**: Comprehensive try-catch blocks with logging
+- **Security**: Secure filename handling, file type validation, size limits
+- **Logging**: Application-level logging for debugging and monitoring
+- **Environment Variables**: Support for SECRET_KEY via environment
+- **Input Validation**: Server-side and client-side validation
+- **User Feedback**: Flash messages for all user actions
+- **HTTP Error Handlers**: Custom 404, 413, and 500 error pages
+- **Testing**: 13 comprehensive unit and integration tests
 
-1. **Not GitHub Pages Compatible**: Requires backend server
-2. **No Authentication**: Admin upload is not password-protected
-3. **No Database**: Uses file system for storage (consider SQLite for production)
-4. **No Rate Limiting**: Should be added for production
-5. **Single Server**: No load balancing or scaling built-in
+## Note
 
-## 🎨 UI Design
-
-**Rating: 7/10**
-- ✅ Clean, minimalist terminal aesthetic
-- ✅ Responsive mobile design
-- ✅ Good user experience
-- ⚠️ Could add: Dark/light theme toggle, accessibility improvements
-
-## 💡 Innovation
-
-**New Technology Used: 6/10**
-- Modern Flask practices
-- Responsive design techniques
-- PDF metadata manipulation
-- Progressive enhancement for mobile
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details
-
-## 🔮 Future Enhancements
-
-- [ ] Add user authentication system
-- [ ] Implement rate limiting
-- [ ] Add SQLite database support
-- [ ] Add paper preview functionality
-- [ ] Implement full-text search in PDFs
-- [ ] Add download statistics
-- [ ] Create admin dashboard
-- [ ] Add email notifications
-- [ ] Implement batch upload
-- [ ] Add API for external access
-
-## 👨‍💻 Author
-
-**Anuj Meena** (anacondy)
-
-## 🙏 Acknowledgments
-
-- Terminal UI inspiration from classic Unix terminals
-- Font: Fira Code by Nikita Prokopov
-- Flask framework and Python community
-
----
-
-**Note**: This application is designed for educational purposes and managing examination papers. Ensure you have proper permissions before uploading or distributing copyrighted material.
-
+This is the version before SQLite implementation, with new loading bar that's thinner and looks like a pipeline.
