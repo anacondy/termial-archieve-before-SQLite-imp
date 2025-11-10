@@ -11,6 +11,9 @@ body {
     color: #33ff33;
     min-height: 100vh;
     padding: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* Terminal styles */
@@ -27,7 +30,8 @@ body {
 
 #output {
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
@@ -252,15 +256,42 @@ body {
 @media (max-width: 768px) {
     body {
         padding: 10px;
+        font-size: 14px;
     }
     
     #terminal {
         padding: 15px;
+        border-width: 1px;
+    }
+    
+    #output {
+        font-size: 13px;
+        line-height: 1.9;
+        letter-spacing: 0.03em;
+    }
+    
+    #mobile-search-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 14px;
+    }
+    
+    .search-box input {
+        font-size: 16px; /* Prevents zoom on iOS */
     }
     
     .upload-container {
         padding: 20px;
         margin: 20px auto;
+    }
+    
+    .upload-container h1 {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+    
+    .form-group label {
+        font-size: 13px;
+        line-height: 1.6;
     }
     
     .button-group {
@@ -270,5 +301,33 @@ body {
     .btn-primary,
     .btn-secondary {
         width: 100%;
+        font-size: 14px;
+        padding: 14px 30px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+    
+    #terminal {
+        padding: 12px;
+        min-height: 400px;
+    }
+    
+    #output {
+        font-size: 12px;
+        line-height: 2;
+    }
+    
+    .upload-container {
+        padding: 16px;
+        margin: 16px auto;
+    }
+    
+    .upload-container h1 {
+        font-size: 18px;
     }
 }
